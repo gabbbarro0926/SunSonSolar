@@ -1,0 +1,218 @@
+/* Variables */
+:root {
+  --focus-color: #5BB259;
+  --error-color: #FF0000;
+  --btn-color: #008000;
+  --btn-hover: #006400;
+  --text-color: #1C1E21;
+  --placeholder-color: #8A8D91;
+  --border-color: #000000;
+  --bg-page: #F4F6F5;
+}
+
+/* Base */
+body {
+  font-family: 'Roboto', sans-serif;
+  color: var(--text-color);
+  background-color: var(--bg-page);
+}
+
+/* Page layout */
+.registration-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+}
+
+.registration-card {
+  width: 100%;
+  max-width: 520px;
+  background-color: #FFFFFF;
+  border: 1px solid #000000;
+  border-radius: 12px;
+  padding: 32px 28px;
+}
+
+/* Loading spinner overlay */
+.registration-card {
+  position: relative;   /* needed so the overlay is positioned within the card */
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  border-radius: 12px; /* matches card radius */
+}
+
+/* Optional: make the spinner larger */
+.loading-overlay .spinner-border {
+  width: 3rem;
+  height: 3rem;
+  border-width: 0.3em;
+  color: #008000; /* matches your Sign-Up button */
+}
+
+/* Logo */
+.logo-mark {
+  height: 48px;
+  width: auto;
+}
+
+/* Title */
+.form-title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 16px 0 24px;
+}
+
+/* Role tabs */
+.role-tabs {
+  display: flex;
+  border-bottom: 2px solid #000000;
+  margin-bottom: 24px;
+}
+
+.role-tab {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 12px 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #000000;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.role-tab.active {
+  color: var(--focus-color);
+  border-bottom-color: var(--focus-color);
+}
+
+/* Form labels */
+.form-label {
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: var(--text-color);
+}
+
+/* Inputs */
+.form-control,
+.form-select {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  color: var(--text-color);
+  height: 52px;
+  padding: 0 16px;
+  border: 1.5px solid var(--border-color);
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+textarea.form-control {
+  height: auto;
+  min-height: 88px;
+  padding: 12px 16px;
+  resize: vertical;
+}
+
+.form-control::placeholder,
+.form-select::placeholder {
+  color: var(--placeholder-color);
+  opacity: 1;
+}
+
+/* Focus state (green) */
+.form-control:focus,
+.form-select:focus {
+  outline: none;
+  border-color: var(--focus-color);
+  box-shadow: 0 0 0 3px rgba(91, 178, 89, 0.15);
+}
+
+/* Error state */
+.form-control.is-invalid,
+.form-select.is-invalid {
+  border-color: var(--error-color);
+}
+
+/* Error + Focus */
+.form-control.is-invalid:focus,
+.form-select.is-invalid:focus {
+  border-color: var(--error-color);
+  box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.15);
+}
+
+/* Valid + Focus (your rule: fixing error turns green) */
+.form-control.is-valid:focus,
+.form-select.is-valid:focus {
+  border-color: var(--focus-color);
+  box-shadow: 0 0 0 3px rgba(91, 178, 89, 0.15);
+}
+
+/* Error message */
+.error-message {
+  display: none;
+  font-size: 13px;
+  color: var(--error-color);
+  margin-top: 6px;
+}
+
+.error-message.show {
+  display: block;
+}
+
+/* Checkbox */
+.form-check-label {
+  font-size: 14px;
+}
+
+.form-check-label a {
+  color: #0000EE;
+  text-decoration: underline;
+}
+
+/* Submit button */
+.signup-btn {
+  background-color: var(--btn-color);
+  color: #FFFFFF;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  height: 52px;
+  border: none;
+  border-radius: 26px;
+  transition: background-color 0.2s ease;
+}
+
+.signup-btn:hover {
+  background-color: var(--btn-hover);
+  color: #FFFFFF;
+}
+
+/* Responsive tweaks */
+@media (max-width: 480px) {
+  .registration-card {
+    padding: 24px 20px;
+  }
+
+  .role-tab {
+    font-size: 16px;
+  }
+}
