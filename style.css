@@ -138,6 +138,45 @@ textarea.form-control {
   opacity: 1;
 }
 
+/* Password wrapper & toggle */
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper .form-control {
+  padding-right: 48px;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  color: #8A8D91;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.password-toggle:hover {
+  color: #1C1E21;
+}
+
+.password-toggle:focus {
+  outline: none;
+  color: #5BB259;
+}
+
+.password-toggle i {
+  font-size: 18px;
+  line-height: 1;
+}
+
 /* Focus state (green) */
 .form-control:focus,
 .form-select:focus {
@@ -164,6 +203,15 @@ textarea.form-control {
 .form-select.is-valid:focus {
   border-color: var(--focus-color);
   box-shadow: 0 0 0 3px rgba(91, 178, 89, 0.15);
+}
+
+/* Remove Bootstrap's validation checkmark/x icons */
+.form-control.is-valid,
+.form-select.is-valid,
+.form-control.is-invalid,
+.form-select.is-invalid {
+  background-image: none !important;
+  padding-right: 48px; /* keep space for the eye toggle */
 }
 
 /* Error message */
