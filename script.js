@@ -243,7 +243,7 @@ document.addEventListener('DOMContentLoaded', function () {
       saveFormState(currentRole);
 
       // Show spinner
-      loadingOverlay.classList.remove('d-none');
+      loadingOverlay.classList.remove('hidden');
 
       setTimeout(function () {
         // Update active tab
@@ -255,11 +255,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Show/hide department + disable when hidden
         if (newRole === 'employee') {
-          employeeFields.classList.remove('d-none');
+          employeeFields.classList.remove('hidden');
           departmentInput.setAttribute('required', 'required');
           departmentInput.disabled = false;
         } else {
-          employeeFields.classList.add('d-none');
+          employeeFields.classList.add('hidden');
           departmentInput.removeAttribute('required');
           departmentInput.disabled = true;
         }
@@ -271,7 +271,7 @@ document.addEventListener('DOMContentLoaded', function () {
         currentRole = newRole;
 
         // Hide spinner
-        loadingOverlay.classList.add('d-none');
+        loadingOverlay.classList.add('hidden');
       }, 300);
     });
   });
