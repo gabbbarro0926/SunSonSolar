@@ -20,12 +20,7 @@
 
   <main class="registration-page">
     <section class="registration-card">
-
-      <!-- Loading spinner overlay -->
-      <div id="loading-overlay" class="loading-overlay hidden">
-        <div class="custom-spinner"></div>
-      </div>
-
+      
       <!-- Logo -->
       <div class="logo">
         <img src="assets/images/logo.png" alt="Sun Son Solar" class="logo-mark">
@@ -107,7 +102,17 @@
         <div id="employee-fields" class="hidden">
           <div class="field">
             <label class="field-label">Department:</label>
-            <input type="text" class="form-input" id="department" name="department" maxlength="50">
+            <select class="form-select" id="department" name="department">
+                <option value="" disabled selected>Select department</option>
+                <option value="Administration">Administration</option>
+                <option value="IT">IT</option>
+                <option value="Dispatch">Dispatch</option>
+                <option value="Accounting">Accounting</option>
+                <option value="HR">HR</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Sales">Sales</option>
+                <option value="Customer Service">Customer Service</option>
+            </select>
             <div class="error-message"></div>
           </div>
         </div>
@@ -153,10 +158,15 @@
         <!-- Submit -->
         <button type="submit" class="signup-btn">Sign-Up</button>
 
+        <!-- Login link -->
+        <p class="login-prompt">
+        Already have an account? <u><a href="login.html">Log-in</a></u>
+        </p>
+
       </form>
     </section>
   </main>
-
+  
   <script src="script.js"></script>
 </body>
 </html>

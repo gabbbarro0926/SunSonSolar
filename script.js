@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const userTypeInput = document.getElementById('user-type');
   const employeeFields = document.getElementById('employee-fields');
   const departmentInput = document.getElementById('department');
-  const loadingOverlay = document.getElementById('loading-overlay');
 
   // TAB STATE PRESERVATION
   let currentRole = 'customer';
@@ -69,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function validateName(value, fieldLabel) {
     const trimmed = value.trim();
     if (trimmed === '') return `Please enter your ${fieldLabel}`;
-    if (!/^[A-Za-z\s\-']+$/.test(trimmed)) return 'Enter a valid name using letters only.';
+    if (!/^[A-Za-z\s\-']+$/.test(trimmed)) return 'Enter a valid name';
     if (trimmed.length < 2 || trimmed.length > 50) return 'Name must be 2–50 characters.';
     return null;
   }
@@ -102,12 +101,12 @@ document.addEventListener('DOMContentLoaded', function () {
     username:        (v) => /^[A-Za-z0-9_]{4,20}$/.test(v) ? null : 'Use 4–20 letters, numbers, or underscores.',
     password:        (v) => /^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/.test(v) ? null : 'Password needs 8+ characters with a capital, number and symbol.',
     confirmPassword: (v) => v === password.value && v !== '' ? null : "Passwords don't match.",
-    departmentInput: (v) => v.trim().length >= 2 ? null : 'Enter your department.'
+    departmentInput: (v) => v !== '' ? null : 'Select a department.'
   };
 
   // HELPERS
   function getErrorElement(input) {
-    const group = input.closest('.mb-3, .col-12, .col-md-4, .col-md-6');
+    const group = input.closest('.field');
     return group ? group.querySelector('.error-message') : null;
   }
 
@@ -175,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     savedState[role].termsChecked = terms.checked;
-    const termsErrorEl = terms.closest('.form-check').querySelector('.error-message');
+    const termsErrorEl = terms.closest('.checkbox-field').querySelector('.error-message');
     savedState[role].termsError = termsErrorEl.classList.contains('show');
   }
 
@@ -220,7 +219,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Restore terms
     terms.checked = savedState[role].termsChecked || false;
-    const termsErrorEl = terms.closest('.form-check').querySelector('.error-message');
+    const termsErrorEl = terms.closest('.checkbox-field').querySelector('.error-message');
     if (savedState[role].termsError) {
       termsErrorEl.textContent = 'You must agree to the Terms and Conditions.';
       termsErrorEl.classList.add('show');
@@ -234,47 +233,39 @@ document.addEventListener('DOMContentLoaded', function () {
   departmentInput.disabled = true;
 
   // TAB CLICK HANDLER
-  roleTabs.forEach(function (tab) {
-    tab.addEventListener('click', function () {
-      const newRole = this.dataset.role;
-      if (newRole === currentRole) return;
+roleTabs.forEach(function (tab) {
+  tab.addEventListener('click', function () {
+    const newRole = this.dataset.role;
+    if (newRole === currentRole) return;
 
-      // Save current tab's state
-      saveFormState(currentRole);
+    // Save current tab's state
+    saveFormState(currentRole);
 
-      // Show spinner
-      loadingOverlay.classList.remove('hidden');
+    // Update active tab
+    roleTabs.forEach(function (t) { t.classList.remove('active'); });
+    tab.classList.add('active');
 
-      setTimeout(function () {
-        // Update active tab
-        roleTabs.forEach(function (t) { t.classList.remove('active'); });
-        tab.classList.add('active');
+    // Update hidden field
+    userTypeInput.value = newRole;
 
-        // Update hidden field
-        userTypeInput.value = newRole;
+    // Show/hide department + disable when hidden
+    if (newRole === 'employee') {
+      employeeFields.classList.remove('hidden');
+      departmentInput.setAttribute('required', 'required');
+      departmentInput.disabled = false;
+    } else {
+      employeeFields.classList.add('hidden');
+      departmentInput.removeAttribute('required');
+      departmentInput.disabled = true;
+    }
 
-        // Show/hide department + disable when hidden
-        if (newRole === 'employee') {
-          employeeFields.classList.remove('hidden');
-          departmentInput.setAttribute('required', 'required');
-          departmentInput.disabled = false;
-        } else {
-          employeeFields.classList.add('hidden');
-          departmentInput.removeAttribute('required');
-          departmentInput.disabled = true;
-        }
+    // Restore new tab's state
+    restoreFormState(newRole);
 
-        // Restore new tab's state
-        restoreFormState(newRole);
-
-        // Update tracker
-        currentRole = newRole;
-
-        // Hide spinner
-        loadingOverlay.classList.add('hidden');
-      }, 300);
-    });
+    // Update tracker
+    currentRole = newRole;
   });
+});
 
   // LIVE VALIDATION
   liveFields.forEach(function (field) {
@@ -336,7 +327,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Terms checkbox
-    const termsErrorEl = terms.closest('.form-check').querySelector('.error-message');
+    const termsErrorEl = terms.closest('.checkbox-field').querySelector('.error-message');
     if (!terms.checked) {
       termsErrorEl.textContent = 'You must agree to the Terms and Conditions.';
       termsErrorEl.classList.add('show');
