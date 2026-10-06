@@ -2,9 +2,13 @@ SunSonSolar
 
 Team Palpitate
 Members:
+
 Ador, Joyce H.
+
 Barro, Gabriel B.
+
 Torres, Gabriel C.
+
 Villaespin, Ronnel C.
 
 
