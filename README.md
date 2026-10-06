@@ -39,15 +39,25 @@ Information Collected
 The registration form collects:
 
 First Name
+
 Middle Name
+
 Last Name
+
 Birthdate
+
 Gender
+
 Email
+
 Phone Number
+
 Address
+
 Username
+
 Password
+
 Department for employees
 
 Technologies Used
