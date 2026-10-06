@@ -15,9 +15,11 @@ Villaespin, Ronnel C.
 **Description:**
 The Sun Son Solar Registration System is a web-based registration system developed for Sun Son Solar. The system allows customers and employees to create accounts by providing their required personal and account information. The project focuses on making the registration process simple, organized, and easy to use, especially for users who may not be very familiar with technology.
 
+
 **Client:**
 Sun Son Solar
 Pasig City, Philippines
+
 
 **Features:**
 Customer registration
@@ -38,10 +40,14 @@ Responsive registration page
 
 Separate customer and employee records
 
+
 **User Roles:**
 Admin - are responsible for managing and overseeing the system.
+
 Employee - can register their account and provide their department and personal information.
+
 Customer -  can register and provide their personal and contact information.
+
 
 **Information Collected
 The registration form collects:**
@@ -67,6 +73,7 @@ Username
 Password
 
 Department for employees
+
 
 **Technologies Used**
 HTML
