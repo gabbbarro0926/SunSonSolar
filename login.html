@@ -1,11 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SunSonSolar | Login</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sun Son Solar | Log In</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="login-body">
+
+  <!-- Navigation Bar (Reused from homepage) -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/images/logo.png" alt="Sun Son Solar Logo">
+      </a>
+      
+      <!-- Keep the nav links so users can go back -->
+      <div class="nav-menu" id="nav-menu">
+        <nav class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="index.html#services">Services</a>
+          <a href="index.html#about">About</a>
+          <a href="index.html#contact">Contact</a>
+        </nav>
+        <!-- Note: We remove the "Log In" button here because we are ON the login page -->
+      </div>
+
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Login Layout -->
+  <main class="login-container">
     
+    <!-- Left Side: Form -->
+    <div class="login-form-side">
+      <div class="login-form-wrapper">
+        <h1 class="login-title">Welcome👋</h1>
+        <p class="login-subtitle">Today is a new day. It's your day. You shape it.<br>Sign in to start managing your projects.</p>
+
+        <form class="login-form" action="dashboard.html" method="POST">
+          
+          <div class="field">
+            <label class="field-label">Email</label>
+            <input type="email" class="form-input" placeholder="Example@email.com" required>
+          </div>
+
+          <div class="field">
+            <label class="field-label">Password</label>
+            <input type="password" class="form-input" placeholder="At least 8 characters" required>
+          </div>
+
+          <div class="forgot-password-wrapper">
+            <a href="#" class="forgot-link">Forgot Password?</a>
+          </div>
+
+          <button type="submit" class="btn-signin">Sign in</button>
+
+          <div class="divider">
+            <span>Or</span>
+          </div>
+
+          <!-- Social Logins (Optional for now, but in your design) -->
+          <button type="button" class="btn-social">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google">
+            Sign in with Google
+          </button>
+          
+          <button type="button" class="btn-social">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Facebook">
+            Sign in with Facebook
+          </button>
+
+        </form>
+
+        <p class="signup-prompt">Don't you have an account? <a href="registration.html">Sign up</a></p>
+      </div>
+    </div>
+
+    <!-- Right Side: Image -->
+    <div class="login-image-side">
+      <!-- The image is applied via CSS background to ensure it fills the space perfectly -->
+    </div>
+
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
