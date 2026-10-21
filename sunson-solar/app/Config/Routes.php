@@ -4,11 +4,13 @@ use CodeIgniter\Router\RouteCollection;
 
 /** @var RouteCollection $routes */
 
-$routes->get('/', static fn () => service('response')->setJSON([
-    'app'     => 'Sun Son Solar API',
-    'version' => '1.0',
-    'docs'    => 'See README.md for the endpoint list.',
-]));
+$routes->get('/', 'Home::index');
+$routes->get('login', 'Home::login');      
+$routes->get('register', 'Home::register'); 
+$routes->get('services', 'Home::services');
+$routes->get('about', 'Home::about');
+$routes->get('contact', 'Home::contact');
+$routes->get('dashboard', 'Home::dashboard');
 
 // CORS preflight for every API URL
 $routes->options('api/(:any)', static fn () => service('response')->setStatusCode(204));
