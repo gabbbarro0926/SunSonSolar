@@ -1,6 +1,7 @@
+const API_URL = 'http://localhost:8080/api/auth/register'; 
 
-
-const API_URL = 'http://localhost:8080/api/auth/register'; // <-- ADD THIS LINE
+const API_URL_REGISTER = 'http://localhost:8080/api/auth/register';
+const API_URL_LOGIN = 'http://localhost:8080/api/auth/login'; // <-- ADD THIS
 
 document.addEventListener('DOMContentLoaded', function () {
 
