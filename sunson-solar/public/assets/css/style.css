@@ -1316,3 +1316,264 @@ body {
     padding: 40px 24px;
   }
 }
+
+/* =========================================
+   PAGE HEADER (Gray Banner)
+   ========================================= */
+.page-header {
+  background-color: var(--bg-light); /* The light gray background */
+  padding: 80px 0;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.page-header .section-title {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+/* =========================================
+   CTA BANNER (Green Section)
+   ========================================= */
+.cta-banner {
+  background-color: var(--btn-color); /* The primary green */
+  padding: 60px 0;
+  color: var(--white);
+}
+
+.cta-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.cta-text h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.cta-text p {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8); /* Slightly transparent white */
+}
+
+/* White button for the green background */
+.btn-cta {
+  display: inline-block;
+  background-color: var(--white);
+  color: var(--text-dark);
+  font-weight: 500;
+  font-size: 16px;
+  padding: 14px 32px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.btn-cta:hover {
+  background-color: #F0F0F0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-header .section-title {
+    font-size: 36px;
+  }
+  
+  .cta-container {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* =========================================
+   ABOUT PAGE STYLES
+   ========================================= */
+.section-padding {
+  padding: 100px 0;
+}
+
+.bg-white { background-color: var(--white); }
+.bg-light { background-color: var(--bg-light); }
+
+.text-gray {
+  color: var(--text-gray);
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* Split Layout (Mission Section) */
+.split-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* About Page Image */
+.about-image {
+  width: 100%;
+  height: 100%;
+  max-height: 450px; /* Prevents it from getting too tall */
+  object-fit: cover; /* Ensures the image fills the space without stretching */
+  border-radius: 12px; /* Matches the soft look of the design */
+  display: block;
+}
+
+.split-content .section-title {
+  margin-top: 12px;
+  margin-bottom: 24px;
+}
+
+/* Image Placeholder */
+.image-placeholder {
+  background-color: #EBEBEB;
+  border-radius: 12px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Values Grid */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.value-card .service-icon {
+  margin-bottom: 20px;
+}
+
+/* Team Grid */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.team-avatar {
+  width: 160px;
+  height: 160px;
+  background-color: #EBEBEB;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  overflow: hidden; /* This ensures the image stays inside the circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Add this new rule right below .team-avatar */
+.team-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* This prevents the image from stretching */
+  object-position: center; /* Centers the face if the image is not perfectly square */
+}
+
+.team-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+.team-role {
+  font-size: 15px;
+  color: var(--text-gray);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .split-layout,
+  .values-grid,
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .image-placeholder {
+    height: 300px;
+  }
+}
+
+/* =========================================
+   CONTACT PAGE STYLES
+   ========================================= */
+.contact-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.contact-icon {
+  width: 48px;
+  height: 48px;
+  background-color: #EEF7EE; /* Light green background */
+  color: var(--btn-color); /* Green icon */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.contact-info-item h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+.contact-info-item p {
+  font-size: 15px;
+  color: var(--text-gray);
+}
+
+/* Contact Form Card */
+.contact-form-card {
+  background-color: var(--bg-light); /* Light gray background */
+  padding: 40px;
+  border-radius: 12px;
+}
+
+/* Map Placeholder */
+.map-section {
+  width: 100%;
+  height: 400px;
+  background-color: #EBEBEB;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.map-placeholder p {
+  font-size: 16px;
+  color: #888;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .contact-form-card {
+    padding: 24px;
+    margin-top: 40px;
+  }
+}

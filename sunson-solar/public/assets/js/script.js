@@ -1,4 +1,6 @@
-// Sun Son Solar - Registration Page Script
+
+
+const API_URL = 'http://localhost:8080/api/auth/register'; // <-- ADD THIS LINE
 
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -162,13 +164,14 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // SUBMIT VALIDATION
+    // SUBMIT VALIDATION & API FETCH
   form.addEventListener('submit', function (e) {
     e.preventDefault();
 
     let hasError = false;
     let firstErrorField = null;
 
+    // 1. Run Client-Side Validation
     liveFields.forEach(function (field) {
       if (!field) return;
       const rule = getRuleFor(field);
@@ -184,7 +187,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
 
-    // Terms checkbox
+    // Terms checkbox validation
     const termsErrorEl = terms.closest('.checkbox-field').querySelector('.error-message');
     if (!terms.checked) {
       termsErrorEl.textContent = 'You must agree to the Terms and Conditions.';
@@ -201,7 +204,54 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
 
-    form.submit();
+    // 2. Send to API
+    const submitBtn = form.querySelector('.signup-btn');
+    const originalBtnText = submitBtn.textContent;
+    submitBtn.textContent = 'Creating account...';
+    submitBtn.disabled = true;
+
+    // Gather data using the exact names the backend expects
+    const formData = {
+      first_name: firstName.value,
+      middle_name: middleName.value,
+      last_name: lastName.value,
+      birthdate: birthDate.value, // backend wants 'birthdate', not 'birth_date'
+      gender: gender.value,
+      email: email.value,
+      phone: phoneInput.value, // backend wants 'phone', not 'phone_no'
+      address: address.value,
+      username: username.value,
+      password: password.value
+    };
+
+    // Fetch Request
+    fetch(API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+      submitBtn.textContent = originalBtnText;
+      submitBtn.disabled = false;
+
+      // Check if the backend sent an error
+      if (data.error || data.errors) {
+        alert('Registration Failed: ' + (data.error || JSON.stringify(data.errors)));
+      } else if (data.message || data.success) {
+        alert('Account created successfully! Please log in.');
+        window.location.href = "login"; // Redirect to login page
+      }
+    })
+    .catch(error => {
+      submitBtn.textContent = originalBtnText;
+      submitBtn.disabled = false;
+      console.error('Error:', error);
+      alert('Something went wrong. Is the backend server running?');
+    });
   });
 
 });
